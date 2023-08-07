@@ -7,6 +7,7 @@
 
 #ifdef USE_OSX
 #include <gdk/gdkquartz.h>
+#include <gdk/quartz/gdkquartz-cocoa-access.h>
 
 #include <Carbon/Carbon.h>
 #import <objc/Object.h>
@@ -21,7 +22,7 @@ void MacMapWin(GtkWidget *w, gboolean f){
   NSWindow* nswin = gdk_quartz_window_get_nswindow(gtk_widget_get_window(w));
 
   if(f){
-    [nswin orderFront:nswin];
+    [nswin orderFrontRegardless:nswin];
   }
   else{
     [nswin orderOut:nswin];
